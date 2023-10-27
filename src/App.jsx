@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import { BsArrowRepeat, BsFileExcel } from 'react-icons/bs'; // Importar iconos
+import './App.css'
 
 
 export const App = () => {
@@ -60,30 +61,32 @@ export const App = () => {
         </div>
       </button>
       <hr className='mb-5' />
-      <table className="min-w-full bg-white border-separate border border-gray-300 ">
-        <thead>
-          <tr>
-            <th className="bg-gray-100 text-gray-600">MessageID</th>
-            <th className="bg-gray-100 text-gray-600">Sender</th>
-            <th className="bg-gray-100 text-gray-600">Msisdn</th>
-            <th className="bg-gray-100 text-gray-600">Datetime</th>
-            <th className="bg-gray-100 text-gray-600">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            data.length == 0 ? <tr><td colSpan="5" className="text-center">Obteniendo Datos...</td></tr> :
-              data.map((item, index) => (
-                <tr key={index}>
-                  <td className="border border-gray-300 p-2">{item.messageId}</td>
-                  <td className="border border-gray-300 p-2">{item.sender}</td>
-                  <td className="border border-gray-300 p-2">{item.msisdn}</td>
-                  <td className="border border-gray-300 p-2">{item.datetime}</td>
-                  <td className="border border-gray-300 p-2">{item.message}</td>
-                </tr>
-              ))}
-        </tbody>
-      </table>
+      <div className="table-responsive">
+        <table className="min-w-full bg-white border-separate border border-gray-300 ">
+          <thead>
+            <tr>
+              <th className="bg-gray-100 text-gray-600">MessageID</th>
+              <th className="bg-gray-100 text-gray-600">Sender</th>
+              <th className="bg-gray-100 text-gray-600">Msisdn</th>
+              <th className="bg-gray-100 text-gray-600">Datetime</th>
+              <th className="bg-gray-100 text-gray-600">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              data.length == 0 ? <tr><td colSpan="5" className="text-center">Obteniendo Datos...</td></tr> :
+                data.map((item, index) => (
+                  <tr key={index}>
+                    <td className="border border-gray-300 p-2">{item.messageId}</td>
+                    <td className="border border-gray-300 p-2">{item.sender}</td>
+                    <td className="border border-gray-300 p-2">{item.msisdn}</td>
+                    <td className="border border-gray-300 p-2">{item.datetime}</td>
+                    <td className="border border-gray-300 p-2">{item.message}</td>
+                  </tr>
+                ))}
+          </tbody>
+        </table>
+      </div>
     </div>
 
 
