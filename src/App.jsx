@@ -76,7 +76,7 @@ export const App = () => {
             {
               data.length == 0 ? <tr><td colSpan="5" className="text-center">Obteniendo Datos...</td></tr> :
                 data.map((item, index) => (
-                  <tr key={index}>
+                  <tr key={index} className='hover:bg-gray-300'>
                     <td className="border border-gray-300 p-2">{item.messageId}</td>
                     <td className="border border-gray-300 p-2">{item.sender}</td>
                     <td className="border border-gray-300 p-2">{item.msisdn}</td>
