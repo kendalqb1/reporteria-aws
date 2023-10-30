@@ -13,7 +13,6 @@ export const App = () => {
 
   const printModal = (item) => {
     Swal.fire({
-      icon: 'message',
       title: item.messageId,
       text: item.message,
       confirmButtonColor: '#3085d6',
