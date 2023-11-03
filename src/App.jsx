@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import * as XLSX from 'xlsx';
 import { BsArrowRepeat } from 'react-icons/bs';
 import { PiMicrosoftExcelLogo } from 'react-icons/pi';
@@ -50,6 +51,7 @@ export const App = () => {
   return (
 
     <div className="container mx-auto p-4 mt-5">
+      <Analytics />
       <h1 className="text-3xl mb-4 text-center font-bold text-gray-600">Prueba tecnica XUM - Ingeniero Cloud</h1>
       <h2 className="text-2xl mb-4 text-center font-bold text-gray-600">Reporteria de mensajes</h2>
       <button
