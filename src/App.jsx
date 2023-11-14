@@ -3,45 +3,43 @@ import { Analytics } from '@vercel/analytics/react';
 import * as XLSX from 'xlsx';
 import { BsArrowRepeat } from 'react-icons/bs';
 import { PiMicrosoftExcelLogo } from 'react-icons/pi';
-import { BiMessageAltDetail } from 'react-icons/bi' // Iconos
+import { BiMessageAltDetail } from 'react-icons/bi'
 import './App.css'
 import Swal from 'sweetalert2'
 
 
 export const App = () => {
-  const [data, setData] = useState([]); // Almacenar los datos del endpoint
-  const [isLoading, setIsLoading] = useState(false); // Estado para mostrar el mensaje de carga
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const printModal = (item) => {
     Swal.fire({
       title: item.messageId,
       text: item.message,
       confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar'
     });
   }
-
 
   const exportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Data'); // 'Data' es el nombre de la hoja
-
-    XLSX.writeFile(wb, 'datos.xlsx'); // Nombre del archivo
+    XLSX.utils.book_append_sheet(wb, ws, 'Mensajeria');
+    XLSX.writeFile(wb, 'datos.xlsx');
   };
 
   useEffect(() => {
-    // Realizar la solicitud para obtener los datos
-    setData([]); // Limpiar los datos
+    setData([]);
     fetch('https://pjerj5feq2.execute-api.us-east-1.amazonaws.com/getMessages', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Solucionar el error de CORS
+        'Access-Control-Allow-Origin': '*',
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data); // Almacenar los datos en el estado
+        setData(data);
       })
       .catch((error) => {
         console.error('Error al obtener los datos:', error);
@@ -88,7 +86,7 @@ export const App = () => {
           </thead>
           <tbody>
             {
-              data.length == 0 ? <tr><td colSpan="5" className="text-center">Obteniendo Datos...</td></tr> :
+              data.length == 0 ? <tr><td colSpan="5" className="text-center text-l font-bold text-gray-600">Obteniendo Datos...</td></tr> :
                 data.map((item, index) => (
                   <tr key={index} className='hover:bg-gray-300'>
                     <td className="border border-gray-300 p-2">{item.messageId}</td>
